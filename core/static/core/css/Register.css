@@ -1,0 +1,219 @@
+/* Barra de navegación mejorada */
+.barra_arriba {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #4e342e, #795548);
+    padding: 0.8rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.icono_barra {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.icono_barra img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.icono_barra:hover {
+    transform: scale(1.05);
+}
+
+.nav_items {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.item_barra {
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.item_barra::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.item_barra:hover::before {
+    transform: translateX(0);
+}
+
+.item_barra:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.inicio {
+    background: linear-gradient(to right, #a0522d, #8d6e63);
+}
+
+.registro {
+    background: linear-gradient(to right, #d2691e, #bcaaa4);
+}
+
+.login {
+    background: linear-gradient(to right, #deb887, #d7ccc8);
+}
+
+.contacto {
+    background: linear-gradient(to right, #f4a460, #efebe9);
+}
+
+/* Estilo para indicar página activa */
+.item_barra.activo {
+    border: 2px solid white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Estilos generales para Registro */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(249, 249, 249, 0.9);
+}
+
+/* Contenedor del formulario */
+.contenedor_formulario {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f1e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-size: 200px;
+    background-blend-mode: overlay;
+}
+
+.contenedor_formulario h2 {
+    text-align: center;
+    color: #a0522d;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.contenedor_formulario h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #d2691e;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Formulario */
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo_formulario {
+    margin-bottom: 1.5rem;
+}
+
+.grupo_formulario label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #a0522d;
+}
+
+.grupo_formulario input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.grupo_formulario input:focus {
+    border-color: #d2691e;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.2);
+}
+
+.boton_formulario {
+    background-color: #d2691e;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+}
+
+.boton_formulario:hover {
+    background-color: #a0522d;
+}
+
+.enlace_alternativo {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.enlace_alternativo a {
+    color: #d2691e;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.enlace_alternativo a:hover {
+    text-decoration: underline;
+}
+
+/* Pie de página */
+.pie_pagina {
+    background-color: #a0522d;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.pie_pagina .contenido p {
+    margin: 0.2rem 0;
+}

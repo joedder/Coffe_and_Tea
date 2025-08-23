@@ -1,0 +1,218 @@
+/* Estructura general */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/* Barra de navegación pegada arriba */
+.barra_arriba {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #4e342e, #795548);
+    padding: 0.8rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+    margin: 0;
+    border-radius: 0;
+}
+
+.icono_barra {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.icono_barra img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.icono_barra:hover {
+    transform: scale(1.05);
+}
+
+.nav_items {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.item_barra {
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.item_barra::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.item_barra:hover::before {
+    transform: translateX(0);
+}
+
+.item_barra:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.inicio {
+    background: linear-gradient(to right, #a0522d, #8d6e63);
+}
+
+.registro {
+    background: linear-gradient(to right, #d2691e, #bcaaa4);
+}
+
+.login {
+    background: linear-gradient(to right, #deb887, #d7ccc8);
+}
+
+.contacto {
+    background: linear-gradient(to right, #f4a460, #efebe9);
+}
+
+/* Estilo para indicar página activa */
+.item_barra.activo {
+    border: 2px solid white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Estilo para la imagen de bienvenida */
+.Bienvenida img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.texto_bienvenida {
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.texto_bienvenida h1 {
+    color: #a0522d;
+    font-size: 2.5rem;
+}
+
+.texto_bienvenida p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Nuevos estilos para el grid de imagen y texto */
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 40px; /* Espacio entre columnas */
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+    align-items: center; /* Centrado vertical */
+}
+
+.columna-imagen {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.columna-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.columna-imagen:hover img {
+    transform: scale(1.05);
+}
+
+.columna-texto h2 {
+    color: #a0522d;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.columna-texto h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #d2691e;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+}
+
+.columna-texto p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-top: 30px;
+}
+
+.contenedor-grid.inverso .columna-imagen {
+    order: 2; /* Mueve la imagen a la segunda columna */
+}
+
+.contenedor-grid.inverso .columna-texto {
+    order: 1; /* Mueve el texto a la primera columna */
+}
+
+/* Footer pegado abajo */
+.pie_pagina {
+    background-color: #a0522d;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+.pie_pagina .contenido p {
+    margin: 0.2rem 0;
+}
+
+/* Contenido principal en flujo normal */
+main {
+    flex: 1;
+    display: block;
+    padding: 2rem 0 2rem 0; /* Separación arriba y abajo respecto a barra y footer */
+}
+

@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card mb-3 shadow-lg" style="max-width: 900px; width: 100%;">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-5">
+                <img src="..." class="img-fluid rounded-start" alt="..." style="object-fit: cover; height: 100%; width: 100%;">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h3 class="card-title">Card title</h3>
+                    <p class="card-text">Este es un texto más largo para mostrar la descripción del producto. Puedes agregar más detalles aquí.</p>
+                    <p class="card-text"><small class="text-body-secondary">Última actualización hace 3 minutos</small></p>
+                    <hr>
+                    <h5>Comentarios</h5>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="3" placeholder="Escribe tu comentario aquí..."></textarea>
+                    </div>
+                    <button class="btn btn-primary mb-4">Enviar comentario</button>
+                    <div>
+                        {% for comentario in comentarios %}
+                            <div class="border rounded p-2 mb-2 text-start">
+                                <strong>{{ comentario.usuario }}</strong> <span class="text-muted" style="font-size: 0.9em;">{{ comentario.fecha }}</span>
+                                <p class="mb-0">{{ comentario.texto }}</p>
+                            </div>
+                        {% empty %}
+                            <p class="text-muted">No hay comentarios aún.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

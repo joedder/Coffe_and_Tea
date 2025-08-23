@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenido en esta pagina encontraras informacion referente al cafe">
+    <meta name="author" content="Joedder Camacho">
+    <meta name="keywords" content="Coffe, Espresso, Tea, Latte">
+    <meta name="copyright" content="Coffe and Tea">
+    <link rel="icon" href="{% static "core\img\Iconos\mug-saucer-solid.svg" %}">
+    <link rel="stylesheet" href="{% static "core\css\Coffee_and_Tea.css" %}">
+    <title>Coffe and Tea (Confia en Ti)</title>
+</head>
+<body>
+    <!-- Barra de navegacion superior -->
+    <header>
+        <nav class="barra_arriba">
+            <div class="icono_barra">
+                <img src="{% static "core\img\Iconos\mug-saucer-solid.svg" %}" alt="Logo de Coffee and Tea">
+            </div>
+            
+            <div class="nav_items">
+                <a class="item_barra inicio" href="{% url 'index'%}">Inicio</a>
+                <a class="item_barra registro activo" href="{% url 'register'%}">Registrarse</a>
+                <a class="item_barra login" href="{% url 'login'%}">Iniciar Sesion</a>
+                <a class="item_barra contacto" href="{% url 'index' %}#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Texto e imagen de bienvenida -->
+        <div class="Bienvenida">
+            <img src="{% static "core\img\Imagenes\Bienvenida.png" %}" alt="Imagen de Bienvenida al sitio">
+        </div>
+        <div class="texto_bienvenida">
+            <h1>Bienvenido a Coffee and Tea (Confia en Ti)</h1>
+            <p>
+                Tu lugar de confianza para disfrutar de las mejores bebidas de café y té.
+                Donde conocerás un poco de las características del café y todos sus tipos
+                de presentaciones en las que se encuentra.
+            </p>
+        </div>
+        <!-- Contendor con grid de imagen y texto -->
+        <div class="contenedor-grid">
+            <div class="columna-imagen">
+                <img src="{% static "core\img\Imagenes\Cafe_especialidad.jpg" %}" alt="Cafe de Especialidad">
+            </div>
+            
+            <div class="columna-texto">
+                <h2>Café de Especialidad</h2>
+                <p>
+                    El término café de especialidad  surge en 1974 de la mano de Erna Knutsen, que lo utilizó en la revista
+                    Tea & Coffee Trade Journal para referirse a unos granos de café exclusivos que habían sido cultivados en
+                    unas condiciones climatológicas idóneas y resaltaban por su aroma y sabor únicos.
+                </p>
+                <p>
+                    El café de especialidad se obtiene a través de un proceso de producción artesanal respetuoso con todas
+                    las partes implicadas en el mismo, desde el caficultor hasta el barista.Se distingue por la ausencia de 
+                    defectos y un aroma, sabor y personalidad excepcionales.
+                </p>
+            </div>
+        </div>
+        <!-- Contendor inverso del grid -->
+        <div class="contenedor-grid inverso">
+            <div class="columna-imagen">
+                <img src="{% static "core\img\Imagenes\Metodos_BREW.jpg" %}" alt="Metodos BREW">
+            </div>
+            
+            <div class="columna-texto">
+                <h2>Metodos BREW</h2>
+                <p>
+                    Los métodos Brew son técnicas de preparación de café que consisten en extraer los sabores y aromas del café
+                    molido mediante la infusión con agua, ya sea caliente o fría, usando diferentes herramientas y tiempos de
+                    extracción.Un ejemplo de estos seria la prensa francesa es un dispositivo simple para elaborar café o té y
+                    suele proporcionar café más fuerte que el de otras cafeteras. 
+                </p>
+                <p>
+                    Estos métodos permiten controlar variables como temperatura, tiempo y molienda para lograr perfiles de sabor
+                    variados y personalizados. Así, cada método Brew ofrece una experiencia única que resalta diferentes
+                    características del café, adaptándose a los gustos y preferencias de los consumidores.
+                </p>
+            </div>
+        </div>
+        <!-- tercer contenedor grid -->
+        <div class="contenedor-grid">
+            <div class="columna-imagen">
+                <img src="{% static "core\img\Imagenes\Café_espresso.jpg" %}" alt="Composicion del cafe espresso">
+            </div>
+            
+            <div class="columna-texto">
+                <h2>Café espresso</h2>
+                <p>
+                    Su mismo nombre ya lo dice: un espresso se prepara al momento, y se saborea enseguida. Se consigue
+                    haciendo pasar durante 25-30 segundos un chorro de agua caliente a presión (9 o más bares) a través
+                    de una capa de 7-9 gramos de finamente calibrado y prensado de café molido. El resultado es un concentrado
+                    de no más de 30 ml de puro placer gustativo.
+                </p>
+                <p>
+                    Esta es la base de todas las bebidas que contienen café; por ende, es muy importante realizarla de manera
+                    correcta, ya que si no tenemos una buena base, nuestra bebida quedaría con un sabor insípido y no sería el
+                    resultado esperado.
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="pie_pagina">
+        <div id="contacto"></div>
+        <div class="contenido">
+            <p>&copy; 2025 Coffee and Tea. Todos los derechos reservados.</p>
+            <p>Desarrollado por Joedder Camacho</p>
+        </div>
+    </footer>
+</body>
+</html>

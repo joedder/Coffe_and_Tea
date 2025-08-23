@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenido en esta pagina encontraras informacion referente al cafe">
+    <meta name="author" content="Joedder Camacho">
+    <meta name="keywords" content="Coffe, Espresso, Tea, Latte">
+    <meta name="copyright" content="Coffe and Tea">
+    <link rel="icon" href="{% static "core\img\Iconos\mug-saucer-solid.svg" %}">
+    <link rel="stylesheet" href="{% static "core\css\Coffee_and_Tea.css" %}">
+    {% block estilos_extra %}{% endblock estilos_extra %}
+    <title>Coffe and Tea (Confia en Ti)</title>
+</head>
+<body>
+    <!-- Barra de navegacion superior -->
+    <header>
+        <nav class="barra_arriba">
+            <div class="icono_barra">
+                <img src="{% static "core\img\Iconos\mug-saucer-solid.svg" %}" alt="Logo de Coffee and Tea">
+            </div>
+            
+            <div class="nav_items">
+                <a class="item_barra inicio" href="{% url 'index'%}">Inicio</a>
+                <a class="item_barra registro activo" href="{% url 'register'%}">Registrarse</a>
+                <a class="item_barra login" href="{% url 'login'%}">Iniciar Sesion</a>
+                <a class="item_barra contacto" href="{% url 'index' %}#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}<h1>Sopa de pollo</h1>{% endblock content %}
+    </main>
+    
+    <footer class="pie_pagina">
+        <div id="contacto"></div>
+        <div class="contenido">
+            <p>&copy; 2025 Coffee and Tea. Todos los derechos reservados.</p>
+            <p>Desarrollado por Joedder Camacho</p>
+        </div>
+    </footer>
+</body>
+</html>
