@@ -11,10 +11,13 @@
                     <p class="card-text"><small class="text-body-secondary">Última actualización hace 3 minutos</small></p>
                     <hr>
                     <h5>Comentarios</h5>
-                    <div class="mb-3">
-                        <textarea class="form-control" rows="3" placeholder="Escribe tu comentario aquí..."></textarea>
-                    </div>
-                    <button class="btn btn-primary mb-4">Enviar comentario</button>
+                    <form method="post" action="{% url 'add_comment' product.id %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="3" placeholder="Escribe tu comentario aquí..." name="comentario"></textarea>
+                        </div>
+                        <button class="btn btn-primary mb-4">Enviar comentario</button>
+                    </form>
                     <div>
                         {% for comentario in comentarios %}
                             <div class="border rounded p-2 mb-2 text-start">

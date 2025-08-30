@@ -31,7 +31,8 @@
     <main>
         <div class="contenedor_formulario">
             <h2>Crear Cuenta</h2>
-            <form class="formulario" action="Coffee_and_Tea.html">
+            <form class="formulario" action="{% url 'register_view' %}" method="post">
+                {% csrf_token %}
                 <div class="grupo_formulario">
                     <label for="nombre">Nombre Completo:</label>
                     <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">

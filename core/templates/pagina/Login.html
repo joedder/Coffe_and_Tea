@@ -31,7 +31,8 @@
     <main>
         <div class="contenedor_formulario">
             <h2>Iniciar Sesión</h2>
-            <form class="formulario" action="Coffee_and_Tea.html">
+            <form class="formulario" action="{% url 'login_view' %}" method="post">
+                {% csrf_token %}
                 <div class="grupo_formulario">
                     <label for="correo">Correo Electrónico:</label>
                     <input type="email" id="correo" name="correo" required placeholder="tuemail@ejemplo.com">
