@@ -13,4 +13,6 @@ urlpatterns = [
     path('product_view/', views.ProductView.as_view(), name='product_view'),
     path('product_detail_view/<int:id>/', views.ProductDetailView.as_view(), name='product_detail_view'),
     path('comment_detail_view/<int:id>/', views.CommentDetailView.as_view(), name='comment_detail_view'),
+    path('comment_update_view/<int:id>/', views.CommentUpdateView.as_view(), name='comment_update_view'),
+    path('comment_delete_view/<int:id>/', views.CommentDeleteView.as_view(), name='comment_delete_view'),
 ]

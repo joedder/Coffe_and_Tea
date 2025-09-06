@@ -84,3 +84,29 @@ class CommentDetailView(View):
 
 
         return redirect('comment_detail_view', id)
+
+class CommentUpdateView(View):
+    template_name= 'pagina\partials\comment_update.html'
+
+    def get(self, request, id, *args, **kwargs):
+        comment=get_object_or_404(Comment, id=id)
+        return render(request, self.template_name, {'comment':comment})
+
+    def post(self, request, id, *args, **kwargs):
+        comment=get_object_or_404(Comment, id=id)
+        body= request.POST.get("body")
+        comment.body= body
+        comment.save()
+        return redirect('comment_detail_view', id)
+
+class CommentDeleteView(View):
+    template_name= 'pagina\partials\comment_delete.html'
+
+    def get(self, request, id, *args, **kwargs):
+        comment=get_object_or_404(Comment, id=id)
+        return render(request, self.template_name, {'comment':comment})
+
+    def post(self, request, id, *args, **kwargs):
+        comment=get_object_or_404(Comment, id=id)
+        comment.delete()
+        return redirect('product_detail_view', comment.product.id)

@@ -1,0 +1,9 @@
+<section>
+    <h2>Eliminar Comentario</h2>
+    <p>¿Estás seguro de que deseas eliminar este comentario? {{ comment.body }}</p>
+    <form method="post" action="{% url 'comment_delete_view' comment.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'comment_detail_view' comment.id %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</section>

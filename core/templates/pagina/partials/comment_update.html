@@ -1,0 +1,17 @@
+<section class="POST">
+    <form method="post" action="{% url 'comment_update_view' comment.id %}">
+        <fieldset>
+            <legend>Actualizar Comentario</legend>
+            {% csrf_token %}
+
+            <div class="grupo_formulario">
+                <label for="body">Comentario:</label>
+                <textarea id="body" name="body" rows="6">{{ comment.body }}</textarea>
+            </div>
+
+            <button type="submit" class="boton_formulario">Guardar Cambios</button>
+        </fieldset>
+    </form>
+
+    <a href="{% url 'comment_detail_view' comment.id %}" class="btn btn-secondary mb-3">← Volver al comentario</a>
+</section>

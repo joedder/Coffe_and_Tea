@@ -11,6 +11,9 @@
                         </div>
                         <button class="btn btn-primary mb-4" type="submit">Enviar comentario</button>
                     </form>
+                        <a href="{% url 'comment_update_view' comment.id %}" class="btn btn-secondary mb-3">← Actualizar comentario</a>
+                        <a href="{% url 'comment_delete_view' comment.id %}" class="btn btn-danger mb-3">Eliminar comentario</a>
+                        <a href="{% url 'product_detail_view' comment.product.id %}" class="btn btn-secondary mb-3">Volver al producto</a>
                     <div>
                         {% for comment in comments %}
                             <div class="border rounded p-2 mb-2 text-start">
@@ -25,5 +28,4 @@
             </div>
         </div>
     </div>
-    <a href="{% url 'product_detail_view' comment.product.id %}" class="btn btn-secondary mb-3">← Volver al producto</a>
 </div>
