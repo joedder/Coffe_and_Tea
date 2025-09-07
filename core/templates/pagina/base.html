@@ -23,8 +23,13 @@
             
             <div class="nav_items">
                 <a class="item_barra inicio" href="{% url 'index'%}">Inicio</a>
-                <a class="item_barra registro activo" href="{% url 'register'%}">Registrarse</a>
-                <a class="item_barra login" href="{% url 'login'%}">Iniciar Sesion</a>
+                {% if user.is_authenticated %}
+                    <span>¡Hola, {{ user.username }}!</span>
+                    <a class="item_barra logout" href="{% url 'logout' %}">Cerrar Sesión</a>
+                {%else%}
+                    <a class="item_barra registro" href="{% url 'register_view'%}">Registrarse</a>
+                    <a class="item_barra login activo" href="{% url 'login_view'%}">Iniciar Sesion</a>
+                {%endif%}
                 <a class="item_barra producto" href="{% url 'product_view'%}">Productos</a>
             </div>
         </nav>

@@ -100,6 +100,19 @@ html{
     background: linear-gradient(to right, #f4a460, #efebe9);
 }
 
+.item_barra.logout {
+    background: #dc3545;
+    color: #fff !important;
+    border-radius: 5px;
+    padding: 6px 16px;
+    margin-left: 10px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.item_barra.logout:hover {
+    background: #b52a37;
+}
+
 /* Estilo para indicar página activa */
 .item_barra.activo {
     border: 2px solid white;

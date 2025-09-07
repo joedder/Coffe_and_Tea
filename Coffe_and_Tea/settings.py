@@ -141,3 +141,6 @@ MEDIA_URL = '/media/'
 
 # Directorio donde se almacenarán los archivos multimedia
 MEDIA_ROOT = BASE_DIR / 'media'
+
+#url de login
+LOGIN_URL = 'login_view'

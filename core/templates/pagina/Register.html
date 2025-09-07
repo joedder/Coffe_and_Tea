@@ -21,8 +21,13 @@
             
             <div class="nav_items">
                 <a class="item_barra inicio" href="{% url 'index'%}">Inicio</a>
-                <a class="item_barra registro activo" href="{% url 'register'%}">Registrarse</a>
-                <a class="item_barra login" href="{% url 'login'%}">Iniciar Sesion</a>
+                {% if user.is_authenticated %}
+                    <span>¡Hola, {{ user.username }}!</span>
+                    <a class="item_barra logout" href="{% url 'logout' %}">Cerrar Sesión</a>
+                {%else%}
+                    <a class="item_barra registro" href="{% url 'register_view'%}">Registrarse</a>
+                    <a class="item_barra login activo" href="{% url 'login_view'%}">Iniciar Sesion</a>
+                {%endif%}
                 <a class="item_barra producto" href="{% url 'product_view'%}">Productos</a>
             </div>
         </nav>
@@ -34,24 +39,23 @@
             <form class="formulario" action="{% url 'register_view' %}" method="post">
                 {% csrf_token %}
                 <div class="grupo_formulario">
-                    <label for="nombre">Nombre Completo:</label>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
-                </div>
-                <div class="grupo_formulario">
-                    <label for="correo">Correo Electrónico:</label>
-                    <input type="email" id="correo" name="correo" required placeholder="tuemail@ejemplo.com">
-                </div>
-                <div class="grupo_formulario">
-                    <label for="contrasena">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" required placeholder="Mínimo 6 caracteres" minlength="6">
-                </div>
-                <div class="grupo_formulario">
-                    <label for="confirmar_contrasena">Confirmar Contraseña:</label>
-                    <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required placeholder="Confirma tu contraseña" minlength="6">
+                    {{form.as_p}}
+                    {%if form.errors%}
+                        <ul style="color: red">
+                            {%for field in form%}
+                                {%for error in field.errors%}
+                                    <li>{{field.label}}: {{error}}</li>
+                                {% endfor%}
+                            {% endfor%}
+                            {%for error in form.non_field_errors%}
+                                <li>{{error}}</li>
+                            {%endfor%}
+                        </ul>
+                    {%endif%}
                 </div>
                 <button type="submit" class="boton_formulario">Registrarse</button>
                 <div class="enlace_alternativo">
-                    <p>¿Ya tienes cuenta? <a href="{% url 'login'%}">Inicia sesión aquí</a></p>
+                    <p>¿Ya tienes cuenta? <a href="{% url 'login_view'%}">Inicia sesión aquí</a></p>
                 </div>
             </form>
         </div>
