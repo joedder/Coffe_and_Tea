@@ -72,4 +72,4 @@ class Comment(models.Model):
         verbose_name_plural = 'Comentarios'
 
     def __str__(self):
-        return f"Comentario de {self.user_id.username} en {self.product_id.name}: {self.body[:20]}..."
+        return f"Comentario de {self.user.username} en {self.product.name}: {self.body[:20]}..."

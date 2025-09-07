@@ -33,6 +33,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -144,3 +145,50 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 #url de login
 LOGIN_URL = 'login_view'
+
+#jazzmin
+JAZZMIN_SETTINGS = {
+    "show_ui_builder": True,
+    "site_title": "Coffe & Tea (Confia en ti) Admin",
+    "site_brand": "Coffe & Tea (Confia en ti)",
+    # "site_logo": "core\static\core\img\Imagenes\Bienvenida.png", #logo en el admin
+    # "login_logo": "", #logo al momento de iniciar sesion
+    # "login_logo_dark":"", #logo cuando esta el tema oscuro 
+    "welcome_sign": "Bienvenido a Coffe & Tea (Confia en ti)",
+    "copyright": "Coffe & Tea (Confia en Ti)",
+    "search_model":["core.User","core.Product","core.Comment","core.CategoryProduct"]
+    # "icons":{} #permite cambiar los iconos
+
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "cyborg",
+    "dark_mode_theme": "superhero",
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
