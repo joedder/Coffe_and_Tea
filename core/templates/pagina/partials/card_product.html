@@ -1,13 +1,15 @@
 <section>
-  <form method="GET" action="{% url 'product_view' %}">
-    <div class="input-group mb-4">
-      <input type="text" name="q" class="form-control" placeholder="Buscar productos..." value="{{ query|default_if_none:'' }}">
-      <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+  <form method="GET" action="{% url 'product_view' %}" class="mb-4">
+    <div class="input-group input-group-lg">
+      <input type="text" name="q" class="form-control rounded-start" placeholder="Buscar productos..." value="{{ query|default_if_none:'' }}">
+      <button class="btn btn-primary rounded-end" type="submit">
+        <i class="bi bi-search"></i> Buscar
+      </button>
     </div>
   </form>
 
   {% if products %}
-    <h3>Resultados de búsqueda</h3>
+    <h3 class="mb-4">Resultados de búsqueda</h3>
     <div class="row">
       {% for product in products %}
         <div class="col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch">
@@ -23,24 +25,48 @@
       {% endfor %}
     </div>
 
-    <div class="pagination justify-content-center">
-      <span class="step-link">
-        {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Anterior</a>
-        {% endif %}
-        <span class="current-page">
-          Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
-        </span>
-        {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Siguiente</a>
-        {% endif %}
-      </span>
-    </div>
+    {% if page_obj.has_other_pages %}
+      <nav aria-label="Paginación de productos">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" aria-label="Anterior">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">&laquo;</span>
+            </li>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <li class="page-item"><a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a></li>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}" aria-label="Siguiente">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">&raquo;</span>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
   {% else %}
     <p>No se encontraron productos para "{{ query }}"</p>
   {% endif %}
 
   <p>
-    <a href="{% url 'product_view' %}">Volver a la lista de productos</a>
+    <a href="{% url 'product_view' %}" class="btn btn-outline-secondary mt-3">Volver a la lista de productos</a>
   </p>
 </section>

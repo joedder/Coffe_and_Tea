@@ -113,9 +113,12 @@ class ProductView(LoginRequiredMixin, View):
 class ProductDetailView(LoginRequiredMixin, View):
     template_name = 'pagina/detail_product.html'
     def get (self, request, id, *args, **kwargs):
-        product=get_object_or_404(Product, id=id)
-        comments=Comment.objects.filter(product_id=id)
-        return render(request, self.template_name, {'product':product, 'comments':comments})
+        product = get_object_or_404(Product, id=id)
+        # Comentarios principales (no son respuesta)
+        comments = Comment.objects.filter(product_id=id, comment__isnull=True)
+        # Respuestas (opcional, si quieres pasarlas aparte)
+        replies = Comment.objects.filter(product_id=id, comment__isnull=False)
+        return render(request, self.template_name, {'product': product, 'comments': comments, 'replies':replies})
     
     def post (self, request, id, *args, **kwargs):
         body= request.POST.get("body")

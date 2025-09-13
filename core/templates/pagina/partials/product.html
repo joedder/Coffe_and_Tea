@@ -21,12 +21,27 @@
                     <div>
                         {% for comment in comments %}
                             <div class="border rounded p-2 mb-2 text-start">
-                                <strong>{{ comment.user.name }}</strong> <span class="text-muted" style="font-size: 0.9em;">{{ comment.created_at }}</span>
+                                <strong>{{ comment.user.name }}</strong>
+                                <span class="text-muted" style="font-size: 0.9em;">{{ comment.created_at }}</span>
                                 <p class="mb-0">{{ comment.body }}</p>
                                 <a href="{% url 'comment_detail_view' comment.id %}">Responder</a>
-
+                                <a href="{% url 'comment_delete_view' comment.id %}" class="btn btn-danger btn-sm ms-2">Eliminar</a>
+                                <!-- Respuestas -->
+                                {% with replies=comment.comment_set.all %}
+                                    {% if replies %}
+                                        <div class="ms-4 mt-2">
+                                            {% for reply in replies %}
+                                                <div class="border rounded p-2 mb-2 bg-light">
+                                                    <strong>{{ reply.user.name }}</strong>
+                                                    <span class="text-muted" style="font-size: 0.85em;">{{ reply.created_at }}</span>
+                                                    <p class="mb-0">{{ reply.body }}</p>
+                                                    <a href="{% url 'comment_delete_view' reply.id %}" class="btn btn-danger btn-sm ms-2">Eliminar</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
                             </div>
-
                         {% empty %}
                             <p class="text-muted">No hay comentarios aún.</p>
                         {% endfor %}
